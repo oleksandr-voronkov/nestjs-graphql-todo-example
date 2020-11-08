@@ -8,6 +8,8 @@ An example of the Todo Application built with NestJS + Mongoose + GraphQl
 $ npm install
 ```
 
+Rename file .env and replace 'test' value with your one
+
 ## Running the app
 
 ```bash
