@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Todo, TodoSchema } from './schemas/todo.schema';
 import { TodosController } from './todos.controller';
+import { TodosResolver } from './todos.resolver';
 import { TodosService } from './todos.service';
 
 @Module({
@@ -14,6 +15,6 @@ import { TodosService } from './todos.service';
     ]),
   ],
   controllers: [TodosController],
-  providers: [TodosService],
+  providers: [TodosService, TodosResolver],
 })
 export class TodosModule {}

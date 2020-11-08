@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { TodosModule } from './todos/todos.module';
 
 import configuration from './config/configuration';
+import { GraphQLModule } from '@nestjs/graphql';
 
 @Module({
   imports: [
@@ -17,10 +18,14 @@ import configuration from './config/configuration';
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get<string>('DATABASE_MONGO_URI'),
+        useNewUrlParser: true,
       }),
       inject: [ConfigService],
     }),
     TodosModule,
+    GraphQLModule.forRoot({
+      autoSchemaFile: 'schema.gql',
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
